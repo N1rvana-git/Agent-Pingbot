@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv
+venv/
+env/
+
+# Environment Variables (CRITICAL)
+.env
+.env.local
+
+# Data & Database
+chroma_db/
+data/output/
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+.pytest_cache/
+.coverage
+htmlcov/

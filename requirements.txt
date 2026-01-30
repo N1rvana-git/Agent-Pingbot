@@ -1,0 +1,14 @@
+langgraph
+langchain
+pydantic
+chromadb
+tavily-python
+python-dotenv
+openai
+pandas
+tabulate
+fastapi
+uvicorn
+langchain-openai
+langchain-core
+streamlit
