@@ -9,30 +9,49 @@ from .config import load_settings
 from .utils.logging_utils import setup_logging
 from .graph.builder import build_crag_graph
 from .ingestion.mineru_parser import MarkdownHierarchySplitter
+from .ingestion.pdf_loader import MinerULoader
 
 
-def _ingest_markdown(path: str) -> int:
-    """Ingest a single Markdown file into ChromaDB.
+def _ingest_file(path: str) -> int:
+    """Ingest a single file (MD or PDF) into ChromaDB.
 
     Args:
-        path: Path to markdown file.
+        path: Path to the source file.
 
     Returns:
         int: Number of chunks ingested.
     """
     logger = setup_logging(name="rail-crag.ingest")
     settings = load_settings(require_keys=False)
+    
+    # 1. Determine Loader
+    content = ""
+    if path.lower().endswith(".pdf"):
+        logger.info("Detected PDF file. Invoking MinerU loader...")
+        try:
+            loader = MinerULoader()
+            content = loader.parse_pdf(path)
+        except Exception as exc:
+            logger.exception("Failed to parse PDF with MinerU: %s", exc)
+            return 0
+    else:
+        # Default to Markdown text read
+        try:
+            with open(path, "r", encoding="utf-8") as handle:
+                content = handle.read()
+        except Exception as exc:
+            logger.exception("Failed to read file: %s", exc)
+            return 0
+
+    # 2. Split & Index
     splitter = MarkdownHierarchySplitter()
     store = VectorStore(settings, logger=logger)
 
-    try:
-        with open(path, "r", encoding="utf-8") as handle:
-            markdown = handle.read()
-    except Exception as exc:
-        logger.exception("Failed to read markdown: %s", exc)
+    chunks = splitter.parse(content)
+    if not chunks:
+        logger.warning("No chunks generated from file: %s", path)
         return 0
-
-    chunks = splitter.parse(markdown)
+        
     return store.add_chunks(chunks, source_name=os.path.basename(path))
 
 
@@ -68,7 +87,8 @@ def main() -> None:
     if args.mode == "ingest":
         if not args.file:
             raise ValueError("--file is required for ingest mode")
-        _ingest_markdown(args.file)
+        count = _ingest_file(args.file)
+        print(f"Successfully ingested {count} chunks from {args.file}")
     elif args.mode == "chat":
         if not args.query:
             raise ValueError("--query is required for chat mode")
