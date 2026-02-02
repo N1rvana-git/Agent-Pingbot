@@ -42,6 +42,13 @@ class SimpleHashEmbeddingFunction:
             dimensions: Vector dimensions.
         """
         self._dimensions = dimensions
+        # WARNING: Critical alert for Hash Embeddings
+        logger = logging.getLogger(__name__)
+        logger.error(
+            "CRITICAL: 缺少 EMBEDDING_MODEL 配置或密钥。当前正在使用 HASH 嵌入 (SimpleHashEmbeddingFunction)。"
+            "这意味着语义搜索将无法工作（Document match score 将毫无意义）。"
+            "请在 .env 中配置有效的 Embeddings Provider 或 ModelScope 本地模型。"
+        )
 
     def __call__(self, input: List[str]) -> List[List[float]]:
         """Embed input texts.
