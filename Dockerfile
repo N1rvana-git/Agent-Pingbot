@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM modelscope-registry.cn-hangzhou.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-cuda12.1.0-py311-torch2.3.1-tf2.16.1-1.34.0
 
 WORKDIR /app
 

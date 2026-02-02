@@ -12,7 +12,10 @@ env/
 
 # Data & Database
 chroma_db/
+data/chroma/
 data/output/
+models/
+*.safetensors
 *.pdf
 
 # IDE

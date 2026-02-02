@@ -12,3 +12,7 @@ uvicorn
 langchain-openai
 langchain-core
 streamlit
+modelscope[nlp]>=1.34.0
+transformers
+torch
+accelerate

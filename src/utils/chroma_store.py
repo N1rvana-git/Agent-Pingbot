@@ -43,16 +43,58 @@ class SimpleHashEmbeddingFunction:
         """
         self._dimensions = dimensions
 
-    def __call__(self, texts: List[str]) -> List[List[float]]:
+    def __call__(self, input: List[str]) -> List[List[float]]:
         """Embed input texts.
 
         Args:
-            texts: Input text list.
+            input: Input text list.
 
         Returns:
             List[List[float]]: Embedding vectors.
         """
-        return [self._embed_text(text) for text in texts]
+        return [self._embed_text(text) for text in input]
+
+    def embed_documents(self, input: List[str]) -> List[List[float]]:
+        """Embed documents for indexing.
+
+        Args:
+            input: Document texts.
+
+        Returns:
+            List[List[float]]: Embedding vectors.
+        """
+        return self.__call__(input)
+
+    def embed_query(self, input: object) -> List[float]:
+        """Embed a single query string.
+
+        Args:
+            input: Query text or list of query texts.
+
+        Returns:
+            List[float]: Embedding vector.
+        """
+        if isinstance(input, list):
+            query_text = " ".join(str(item) for item in input)
+        else:
+            query_text = str(input)
+        return [self._embed_text(query_text)]
+
+    def name(self) -> str:
+        """Return embedding function name.
+
+        Returns:
+            str: Name identifier for the embedding function.
+        """
+        return "simple_hash"
+
+    def get_config(self) -> dict:
+        """Return embedding function configuration.
+
+        Returns:
+            dict: Configuration metadata.
+        """
+        return {"dimensions": self._dimensions}
 
     def _embed_text(self, text: str) -> List[float]:
         """Embed a single text deterministically.

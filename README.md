@@ -61,6 +61,10 @@ streamlit run ui.py
 
 ```
 
+## 🧰 ModelScope 部署
+
+详见 [docs/modelscope_deploy.md](docs/modelscope_deploy.md)（含 Docker 镜像与 Python 依赖两种方案）。
+
 ## 📂 数据处理 (Data Ingestion)
 
 本项目依赖 **MinerU (Magic-PDF)** 进行高精度解析。
