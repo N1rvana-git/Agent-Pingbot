@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q01",
+    "query": "时速350公里路段的最小曲线半径一般值和困难值是多少？",
+    "expected_keywords": ["7000", "5500"]
+  },
+  {
+    "id": "q02",
+    "query": "机车车辆限界和建筑限界的区别是什么？",
+    "expected_keywords": ["GB 146.1", "GB 146.2", "安全余量"]
+  },
+  {
+    "id": "q03",
+    "query": "CRTS III型无砟轨道板的平面度误差限值",
+    "expected_keywords": ["CRTS III", "0.3mm", "TB/T 3275"]
+  },
+  {
+    "id": "q04",
+    "query": "高速铁路钢轨的非金属夹杂物怎么评级？",
+    "expected_keywords": ["夹杂物", "TB/T 2344"]
+  },
+  {
+    "id": "q05",
+    "query": "CPI、CPII、CPIII 三级控制网由哪个标准规定？",
+    "expected_keywords": ["CPIII", "TB 10601"]
+  },
+  {
+    "id": "q06",
+    "query": "大跨度桥梁为什么要校核车桥耦合振动？",
+    "expected_keywords": ["车-桥耦合", "TB 10002", "自振频率"]
+  },
+  {
+    "id": "q07",
+    "query": "隧道出口的微气压波限值是多少帕？",
+    "expected_keywords": ["微气压波", "20Pa", "TB 10003"]
+  },
+  {
+    "id": "q08",
+    "query": "GB 5599 里的脱轨系数和 Sperling 平稳性指标",
+    "expected_keywords": ["GB 5599", "脱轨系数", "Sperling"]
+  },
+  {
+    "id": "q09",
+    "query": "轮对压装曲线如何判定合格？",
+    "expected_keywords": ["TB/T 2710", "压装"]
+  },
+  {
+    "id": "q10",
+    "query": "机车车辆阻燃材料的 R1-R26 分类依据",
+    "expected_keywords": ["R1-R26", "GB/T 32357", "阻燃"]
+  },
+  {
+    "id": "q11",
+    "query": "弓网受流质量里的燃弧率限值",
+    "expected_keywords": ["燃弧率", "GB/T 32592", "0.2%"]
+  },
+  {
+    "id": "q12",
+    "query": "高铁牵引变电所为什么采用 AT 供电方式？",
+    "expected_keywords": ["AT供电", "TB 10009"]
+  },
+  {
+    "id": "q13",
+    "query": "CTCS-3 级列控系统叠加了什么通信方式？",
+    "expected_keywords": ["CTCS-3", "GSM-R"]
+  },
+  {
+    "id": "q14",
+    "query": "信号设备要达到 SIL4 级，依据哪个 RAMS 标准？",
+    "expected_keywords": ["SIL4", "GB/T 21562", "RAMS"]
+  },
+  {
+    "id": "q15",
+    "query": "应答器报文编码要遵循什么应用原则？",
+    "expected_keywords": ["TB/T 3485", "应答器", "报文"]
+  },
+  {
+    "id": "q16",
+    "query": "铁路车站和线路的统一编码标准",
+    "expected_keywords": ["TB/T 3069", "编码"]
+  },
+  {
+    "id": "q17",
+    "query": "铁路网络安全要求生产控制大区如何隔离？",
+    "expected_keywords": ["TB/T 3568", "物理单向隔离", "分区隔离"]
+  },
+  {
+    "id": "q18",
+    "query": "面向Agent的铁路标准本体论应该怎么构建？",
+    "expected_keywords": ["本体论", "Ontology", "约束条件集合"]
+  },
+  {
+    "id": "q19",
+    "query": "铁路标准RAG系统为什么要做混合检索和重排序？",
+    "expected_keywords": ["混合检索", "重排序"]
+  },
+  {
+    "id": "q20",
+    "query": "知识图谱里实体和关系如何设计？",
+    "expected_keywords": ["hasParameter", "definesLimit", "知识图谱"]
+  },
+  {
+    "id": "q21",
+    "query": "标准里的复杂表格怎么做语义化解析？",
+    "expected_keywords": ["表格语义化", "跨行跨列"]
+  },
+  {
+    "id": "q22",
+    "query": "高速铁路设计规范对最大坡度和线间距的规定",
+    "expected_keywords": ["20‰", "线间距", "TB 10621"]
+  },
+  {
+    "id": "q23",
+    "query": "铁路技术管理规程在运输组织中的地位",
+    "expected_keywords": ["技规", "行车组织"]
+  },
+  {
+    "id": "q24",
+    "query": "铁路集装箱运输适用哪个技术规范？",
+    "expected_keywords": ["TB/T 1568", "集装箱"]
+  }
+]

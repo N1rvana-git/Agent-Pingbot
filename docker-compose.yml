@@ -1,0 +1,24 @@
+services:
+  backend:
+    build: .
+    container_name: rail-crag-api
+    env_file:
+      - .env
+    command: uvicorn src.server:app --host 0.0.0.0 --port 8000
+    volumes:
+      - ./data/chroma:/app/chroma_db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: .
+    container_name: rail-crag-ui
+    env_file:
+      - .env
+    command: streamlit run ui.py --server.port 8501 --server.address 0.0.0.0
+    volumes:
+      - ./data/chroma:/app/chroma_db
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend

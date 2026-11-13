@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENAI_API_KEY: ""
+      TAVILY_API_KEY: ""
+      EMBEDDING_BACKEND: hashing
+      CHROMA_PERSIST_DIR: ${{ github.workspace }}/.ci-chroma
+      COLLECTION_NAME: ci_corpus
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -t . -v
+
+      - name: Build the demo index
+        run: python -m src.main ingest --file data/railway_standard_guide.md --reset
+
+      - name: Retrieval regression gate
+        run: python scripts/eval_retrieval.py --top-k 1 --min-hit-rate 0.95

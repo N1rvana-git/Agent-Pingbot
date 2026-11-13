@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv
+venv/
+env/
+
+# Environment Variables (CRITICAL)
+.env
+.env.local
+
+# Data & Database
+chroma_db/
+data/chroma/
+data/output/
+data/mineru_output/
+.ci-chroma/
+models/
+*.safetensors
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.log
